@@ -58,8 +58,6 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user")
     private List<Review> reviews = new ArrayList<>();
 
-    @OneToOne(mappedBy = "user")
-    private Review review;
 
 
 
