@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import umc.spring.apiPayload.BaseResponse;
 import umc.spring.apiPayload.code.status.ErrorStatus;
 import umc.spring.apiPayload.code.status.SuccessStatus;
+import umc.spring.domain.mapping.UserMission;
 import umc.spring.dto.request.MissionRequestDTO;
 import umc.spring.dto.request.StoreRequestDTO;
 import umc.spring.service.mission.MissionService;
@@ -27,4 +28,13 @@ public class MissionController {
         }
 
     }
+    @PostMapping("/{missionId}/users/{userId}")
+    public BaseResponse<UserMission>joinMission(@PathVariable Long userId,@PathVariable Long missionId){
+        try{
+            return BaseResponse.of(SuccessStatus.MISSION_JOIN_OK,missionService.joinMission(userId,missionId));
+        }catch (NoSuchElementException e) {
+            return BaseResponse.onFailure(ErrorStatus._BAD_REQUEST.getMessage(), ErrorStatus._BAD_REQUEST.getCode(), null);
+        }
+    }
+
 }

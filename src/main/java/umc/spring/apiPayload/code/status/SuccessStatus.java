@@ -14,7 +14,8 @@ public enum SuccessStatus implements BaseCode {
     _CREATED(HttpStatus.CREATED, "COMMON201", "요청 성공 및 리소스 생성됨"),
     STORE_CREATED(HttpStatus.CREATED, "STORE201", "매장 생성 성공"),
     REVIEW_CREATED(HttpStatus.CREATED, "REVIEW201", "리뷰 작성 성공"),
-    MISSION_CREATED(HttpStatus.CREATED, "MISSION201", "미션 생성 성공");
+    MISSION_CREATED(HttpStatus.CREATED, "MISSION201", "미션 생성 성공"),
+    MISSION_JOIN_OK(HttpStatus.OK,"MISSION200","미션참여성공");
 
     private final HttpStatus httpStatus;
     private final String code;

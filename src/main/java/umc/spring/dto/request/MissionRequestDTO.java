@@ -9,6 +9,6 @@ public class MissionRequestDTO {
         private String content;
         private Long point;
         private String ownerCode;
-        private Status status;
     }
+
 }

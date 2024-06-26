@@ -6,6 +6,7 @@ import lombok.*;
 import umc.spring.domain.Mission;
 import umc.spring.domain.User;
 import umc.spring.domain.common.BaseEntity;
+import umc.spring.domain.enums.Status;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -25,4 +26,15 @@ public class UserMission extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mission_id")
     private Mission mission;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setMission(Mission mission) {
+        this.mission = mission;
+    }
 }

@@ -28,9 +28,6 @@ public class Mission extends BaseEntity {
     @Column(name = "owner_code")
     private String ownerCode;
 
-    @Enumerated(EnumType.STRING)
-    private Status status;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
     private Store store;
