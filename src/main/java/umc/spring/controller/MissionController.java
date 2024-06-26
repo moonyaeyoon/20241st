@@ -5,29 +5,26 @@ import org.springframework.web.bind.annotation.*;
 import umc.spring.apiPayload.BaseResponse;
 import umc.spring.apiPayload.code.status.ErrorStatus;
 import umc.spring.apiPayload.code.status.SuccessStatus;
+import umc.spring.dto.request.MissionRequestDTO;
 import umc.spring.dto.request.StoreRequestDTO;
-import umc.spring.service.store.StoreService;
+import umc.spring.service.mission.MissionService;
 
 import java.util.NoSuchElementException;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/store")
-public class StoreController {
-    private final StoreService storeService;
+@RequestMapping("/api/v1/mission")
+public class MissionController {
+    private final MissionService missionService;
 
-    @PostMapping("/{regionId}")
-    public BaseResponse<Void> createStore(@PathVariable Long regionId, @RequestBody StoreRequestDTO.CreateStoreDTO createStoreDTO){
+    @PostMapping("/{storeId}")
+    public BaseResponse<Void> createMission(@PathVariable Long storeId, @RequestBody MissionRequestDTO.CreateMissionDTO createMissionDTO){
         try {
-            storeService.createStore(regionId,createStoreDTO);
-            return BaseResponse.of(SuccessStatus.STORE_CREATED,null);
+            missionService.createMission(storeId,createMissionDTO);
+            return BaseResponse.of(SuccessStatus.MISSION_CREATED,null);
         } catch (NoSuchElementException e) {
             return BaseResponse.onFailure(ErrorStatus._BAD_REQUEST.getMessage(), ErrorStatus._BAD_REQUEST.getCode(), null);
         }
 
     }
-
-
-
-
 }

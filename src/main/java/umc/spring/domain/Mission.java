@@ -38,4 +38,8 @@ public class Mission extends BaseEntity {
     @OneToMany(mappedBy = "mission")
     private List<UserMission> userMissions = new ArrayList<>();
 
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
 }
