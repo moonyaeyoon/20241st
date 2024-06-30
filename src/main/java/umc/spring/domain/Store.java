@@ -32,5 +32,12 @@ public class Store extends BaseEntity {
     @OneToMany(mappedBy = "store")
     private List<Review> reviews = new ArrayList<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "region_id")
+    private Region region;
 
+
+    public void setRegion(Region region) {
+        this.region = region;
+    }
 }

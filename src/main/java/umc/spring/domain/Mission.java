@@ -28,14 +28,15 @@ public class Mission extends BaseEntity {
     @Column(name = "owner_code")
     private String ownerCode;
 
-    @Enumerated(EnumType.STRING)
-    private Status status;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
     private Store store;
 
     @OneToMany(mappedBy = "mission")
     private List<UserMission> userMissions = new ArrayList<>();
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
 
 }
